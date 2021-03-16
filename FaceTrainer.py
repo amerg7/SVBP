@@ -5,7 +5,7 @@ import os
 # In line below, you need to specify the location of the file
 os.system("python dataset(Imagegathering).py")
 
-# Path for face image database
+
 # In line below, you need to specify the location of the file
 path = 'Dataset(images)'
 recognizer = cv2.face.LBPHFaceRecognizer_create()
