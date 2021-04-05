@@ -6,8 +6,8 @@ window = Tk()
 window.title("Smart Vision")
 window.geometry("200x400")
 
-name= []
-Id= []
+name = []
+Id = []
 
 def takePicture():
     os.system("python FaceTrainer.py")
@@ -52,5 +52,6 @@ Startprogram.grid(pady=10)
 
 endprogram = Button(window, text="Exit",command=endProgram)
 endprogram.grid(pady=10)
+
 window.mainloop()
 
