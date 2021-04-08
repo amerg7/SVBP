@@ -5,7 +5,6 @@ import pickle
 from shapely.geometry import Polygon
 import cv2
 import pyttsx3
-import os
 
 
 # the function below are used for tracking the objects of any type using ROI (Region Of Interest)
