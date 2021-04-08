@@ -34,7 +34,7 @@
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#projectpartners">Project Partners</a></li>
+    <li><a href="#project-partners">Project Partners</a></li>
   </ol>
 </details>
 
