@@ -83,11 +83,11 @@ For running Tensorflow Minimum Systems Requirements:
 
 To use the code you must first install all the libraries needed below.
 
-* []() OpenCv 
+* []() OpenCV 
   ```sh
   pip install opencv-python
   ```
-* []() OpenCv contrib
+* []() OpenCV contrib
   ```sh
   pip install opencv-contrib-python
   ```
