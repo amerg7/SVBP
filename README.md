@@ -81,7 +81,7 @@ For running Tensorflow Minimum Systems Requirements:
 
 ### Installation
 
-To use the code you must first install all the libraries needed below.
+To use the code you must first install all the libraries needed below using IDE terminal or CMD.
 
 * []() OpenCV 
   ```sh
