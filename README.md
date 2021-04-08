@@ -5,9 +5,7 @@
     <img src="https://seu.edu.sa/media/1387/logo_3d_last.png" alt="Logo" width="300" height="90">
   </a>
 
-  <h3 align="center">Smart Vision for Blind People
-(SVBP)
-</h3>
+  <h3 align="center">Smart Vision for Blind People(SVBP)</h3>
   <p align="center">
     <br />
     <a href="https://youtu.be/TPsLbUpEoQY">View Demo</a>
@@ -31,6 +29,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#how-to-start">How to start</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -126,10 +125,18 @@ To use the code you must first install all the libraries needed below.
   pip install pyttsx3
   ```
 
+## How to start
+
+When you open the program with any IDE, run the `SmartVision_GUI.py`file.
+   * Put your name and give yourself an ID number then press Save.
+   * Face the camera then press Take Picture.
+   * Wait until the program finishes training your image.
+   * Press start Smart vision.
+   * enjoy
+
+
 ## Roadmap
-
 See the [open issues](https://github.com/amerg7/SVBP/issues) for a list of proposed features (and known issues).
-
 
 ## Project Partners
 
