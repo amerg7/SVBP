@@ -124,10 +124,13 @@ To use the code you must first install all the libraries needed below.
   ```sh
   pip install pyttsx3
   ```
-
+  
 ## How to start
 
 When you open the program with any IDE, run the `SmartVision_GUI.py`file.
+
+<img src="https://raw.githubusercontent.com/amerg7/SVBP/main/SVBP-GUI.png" alt="SVBP-GUI" width="106" height="223">
+
    * Put your name and give yourself an ID number then press Save.
    * Face the camera then press Take Picture.
    * Wait until the program finishes training your image.
