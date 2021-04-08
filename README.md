@@ -59,7 +59,7 @@ headphones/speakers.
 
 ### Prerequisites
 
-### For running Python Recommended System Requirements
+For running Python Recommended System Requirements
 
 * Processors:Intel® Core™ i5 processor 4300M at 2.60 GHz or 2.59 GHz (1 socket, 2 cores, 2 threads per core), 
   8 GB of DRAMIntel® Xeon® processor E5-2698 v3 at 2.30 GHz (2 sockets, 16 cores each, 1 thread per core), 
