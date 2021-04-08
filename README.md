@@ -130,7 +130,10 @@ To use the code you must first install all the libraries needed below.
 See the [open issues](https://github.com/amerg7/SVBP/issues) for a list of proposed features (and known issues).
 
 
-## Contact
+## Project Partners
 
-Project Link: [https://github.com/amerg7/SVBP](https://github.com/amerg7/SVBP)
+* Amer(Me): [https://github.com/amerg7](https://github.com/amerg7)
+* Naji: [https://github.com/OLD-GOLD](https://github.com/OLD-GOLD)
+* Naif:  [https://github.com/Naccie](https://github.com/Naccie)
+
 
