@@ -14,8 +14,8 @@ fconfidence = Functions.recognizer.predict
 capture = cv2.VideoCapture(0)
 minW = 0.1 * capture.get(3)
 minH = 0.1 * capture.get(4)
-capture.set(3,1800)
-capture.set(4,1200)
+capture.set(3, 1800)
+capture.set(4, 1200)
 # Here we are passing path weights and configure wights
 net = cv2.dnn_DetectionModel(Functions.weightsPath, Functions.configPath)
 # this is used to normalize the frame
@@ -30,6 +30,7 @@ while capture.isOpened():
     font = cv2.FONT_HERSHEY_SIMPLEX
     threshold = 0.5
     success, frame = capture.read()
+
     classIds, confs, detectionBboxes = net.detect(frame, confThreshold=0.5)
     Togray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = Functions.face_classifier.detectMultiScale(Togray, 1.3, 5)
@@ -45,15 +46,18 @@ while capture.isOpened():
                 if classId != 1:
                     cv2.rectangle(frame, detectionBox, color=(255, 255, 255), thickness=2)
                     confidence = "{:.0f}".format(confidence * 100, 1)
+                    # *************************************************
+                    # Code below to start Warning voice based on distance
                     if int(objectDistance) <= 80:
                         warning = "warning " + Functions.classNames[classId - 1] + \
                                   " change your path"
-                        Functions.voiceOutput(warning)
+                        # Functions.voiceOutput(warning)
+                    # *************************************************
                     if not Functions.isBoxMatched(trackerBboxes, detectionBox):
                         if float(confidence) >= 60 and float(objectDistance) <= 120:
                             trackerBboxes.append(detectionBox)
                             Functions.voiceOutput(Functions.classNames[classId - 1])
-                            if len(trackerBboxes) >= 10:
+                            if len(trackerBboxes) >= 2:
                                 trackerBboxes.clear()
                     cv2.putText(frame, "Object name: " + Functions.classNames[classId - 1], (x, y - 45), font, 0.7,
                                 (255, 255, 255), 2)
@@ -75,7 +79,6 @@ while capture.isOpened():
                         cv2.rectangle(frame, (x, y), (x + width, y + height), (255, 255, 255), 2)
                         id, faceConv = Functions.recognizer.predict(gray[y:y + height, x:x + width])
                         faceDist = Functions.faceDes(x, y, width, height, actual_width=23)
-                        # faceExp = Functions.faceExpression(frame, Togray, x, y, width, height)
                         ROI_gray = Togray[y:y + height, x:x + width]
                         ROI_gray = cv2.resize(ROI_gray, (48, 48))
                         if np.sum([ROI_gray]) != 0:  # the sum of the matrix must not be 0
@@ -85,26 +88,22 @@ while capture.isOpened():
                             # make a prediction on the face and print the prediction stat
                             preds = Functions.classifier.predict(ROI)[0]
                             label = Functions.class_labels[preds.argmax()]
-                            # expression = label
 
-                            if classId == 1 and faceConv <= 70:
+                            if classId == 1 and faceConv <= 60:
                                 id = Functions.names[id]
                                 unknownFace = "{0}%".format(round(100 - faceConv))
-                                if not Functions.isFBoxMatched(trackerFboxes, detectionBox):
+                                if not Functions.isFBoxMatched(trackerFboxes, detectionBox) and int(faceDist) < 200:
                                     trackerFboxes.append(detectionBox)
-                                    Functions.voiceOutput(
-                                        str(id + " he's" + faceDist + "centimeter from you with a " + str(
-                                            label) + " face"))
-                                    if len(trackerFboxes) >= 2:
+                                    Functions.voiceOutput(str(id + " is here with a " + str(label) + " face"))
+                                    if len(trackerFboxes) >= 4:
                                         trackerFboxes.clear()
                             else:
                                 id = "unknown"
                                 unknownFace = "0 %"
-                                if not Functions.isFBoxMatched(trackerBboxes, detectionBox):
+                                if not Functions.isFBoxMatched(trackerFboxes, detectionBox):
                                     trackerFboxes.append(detectionBox)
-                                    Functions.voiceOutput(
-                                        str(id + " person and he's " + objectDistance + " centimeter from you with a " + str(
-                                                label) + " face"))
+                                    Functions.voiceOutput(str(id + " person with a " + str(label) + " face"))
+
                             cv2.putText(frame, "Name: " + str(id), (x, y - 65), font, 0.7, (255, 255, 255), 2)
                             cv2.putText(frame, "Confidence: " + str(unknownFace), (x, y - 45), font, 0.7,
                                         (255, 255, 255), 2)

@@ -5,45 +5,44 @@ import pickle
 from shapely.geometry import Polygon
 import cv2
 import pyttsx3
+import os
 
-# the variable below are used to initialize the voice engine
-voiceEngine = pyttsx3.init()
 
 # the function below are used for tracking the objects of any type using ROI (Region Of Interest)
 classFile = 'projectAssets/Object.names'
 with open(classFile, 'r') as items:
     classNames = items.read().rstrip('\n').split('\n')
 
-
-# the function below are used to calculate the actual distance of faces using face dimensions (bounding boxes)
-def faceDes(x, y, width, height, actual_width):
-    pixel_distance = math.sqrt((x + width) ** 2 + (y + height) ** 2)
-    actual_distance = (pixel_distance / width) * actual_width
-    distFace = "{:.0f}".format(actual_distance * 1.1)
-    return distFace
-
-
-# the function below are used to calculate the actual distance of objects using object dimensions (bounding boxes)
-def objDis(x, y, width, height, id):
-    pixel_distance = math.sqrt((x + width) ** 2 + (y + height) ** 2)
-    actual_distance = (pixel_distance / width) * objectDec[classNames[id - 1]]
-    distance = "{:.0f}".format(actual_distance * 1.1)
-    return distance
-
-
 # the variable below are used to open the encrypted names list of users.
 names = pickle.load(open("names.dat", "rb"))
 
 # Files path below are very important in order to start the program.
+# ******************************************************************* #
+# In line below, label list of the facial emotions.
 class_labels = ["Angry", "Happy", "Normal", "Sad", "Surprised"]
+
+# The variable below used to initiate the CV2 face recognition.
 recognizer = cv2.face.LBPHFaceRecognizer_create()
+
+# In line below, the path for the trainer file depends on the CV2 LBHFaceRecognizer.
 recognizer.read('projectAssets/trainer.yml')
 cascadePath = "projectAssets/haarcascade_frontalface_default.xml"
+
+# In line below, the path for objects weights and configuration files.
 configPath = 'projectAssets/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt'
 weightsPath = 'projectAssets/frozen_inference_graph.pb'
+
+# In line below, the path for objects names file.
 classFile = 'projectAssets/Object.names'
+
+# In line below, the path for Faces classifier.
 face_classifier = cv2.CascadeClassifier('projectAssets\haarcascade_frontalface_default.xml')
+
+# In line below, the path for Facial Emotion Model.
 classifier = load_model('projectAssets\Emotion_Detection.h5')
+
+# In line below, the path for Object detector.
+detector = cv2.CascadeClassifier("projectAssets\haarcascade_frontalface_default.xml")
 
 # the measurement of objects below are in cm (most common objects are used)
 objectDec = {'person': 42, 'bicycle': 45, 'car': 157, 'motorcycle': 85, 'airplane': 4500,
@@ -62,6 +61,25 @@ objectDec = {'person': 42, 'bicycle': 45, 'car': 157, 'motorcycle': 85, 'airplan
              'sink': 83, 'refrigerator': 83, 'blender': 30, 'book': 35, 'clock': 30, 'vase': 19, 'knife': 9,
              'teddy bear': 15, 'hair drier': 5, 'toothbrush': 1, 'hair brush': 7, 'Table': 100
              }
+
+# the variable below are used to initialize the voice engine
+voiceEngine = pyttsx3.init()
+
+
+# the function below are used to calculate the actual distance of faces using face dimensions (bounding boxes)
+def faceDes(x, y, width, height, actual_width):
+    pixel_distance = math.sqrt((x + width) ** 2 + (y + height) ** 2)
+    actual_distance = (pixel_distance / width) * actual_width
+    distFace = "{:.0f}".format(actual_distance * 1.1)
+    return distFace
+
+
+# the function below are used to calculate the actual distance of objects using object dimensions (bounding boxes)
+def objDis(x, y, width, height, id):
+    pixel_distance = math.sqrt((x + width) ** 2 + (y + height) ** 2)
+    actual_distance = (pixel_distance / width) * objectDec[classNames[id - 1]]
+    distance = "{:.0f}".format(actual_distance * 1.1)
+    return distance
 
 
 # Function below are used to calculate the bounding box and the ground box.
@@ -102,6 +120,6 @@ def isFBoxMatched(trackerBbox, detectionbox):
 
 # Function below are used to convert the texts to voices
 def voiceOutput(name):
-    voiceEngine.setProperty("rate", 175)
+    voiceEngine.setProperty("rate", 200)
     voiceEngine.say(name)
     voiceEngine.runAndWait()

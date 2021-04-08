@@ -2,14 +2,14 @@ import cv2
 import numpy as np
 from PIL import Image
 import os
-# In line below, you need to specify the location of the file
+
 os.system("python dataset(Imagegathering).py")
 
-# Path for face image database
-# In line below, you need to specify the location of the file
+# In line below, the path for the saved images folder.
 path = 'Dataset(images)'
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-# In line below, you need to specify the location of the file
+
+# In line below, the path for Object Classifier.
 detector = cv2.CascadeClassifier("projectAssets\haarcascade_frontalface_default.xml")
 
 # function to get the images and label data
