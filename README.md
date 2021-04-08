@@ -36,6 +36,7 @@
 
 
 ## About The Project
+<p align="justify">
 The project is a smart eyeglass named “Smart Vision for Blind People” (SVBP) for people with complete or partial
 blindness by giving them information about their surrounding environment including the people by using face/object
 detection and recognition and obstacle avoidance. The SVBP system will output voice-based guidance to guide the person
@@ -45,6 +46,7 @@ information about all objects such as names, distance, and in case of a living o
 person, an approximate distance separating the user from the person, an approximate indication of the user’s facial
 expression. All this information generated from SVBP will have a form of physical output which is through the use of
 headphones/speakers.
+</p>
 
 ### Built With
 
