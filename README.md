@@ -1,4 +1,3 @@
-<!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://seu.edu.sa/en/home/">
@@ -12,8 +11,6 @@
     ·
     <a href="https://github.com/amerg7/SVBP/issues/new">Report Bug</a>
   </p>
-
-</p>
 
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
@@ -129,7 +126,9 @@ To use the code you must first install all the libraries needed below.
 
 When you open the program with any IDE, run the `SmartVision_GUI.py`file.
 
+  <a href="https://raw.githubusercontent.com/amerg7/SVBP/main/SVBP-GUI.png">
 <img src="https://raw.githubusercontent.com/amerg7/SVBP/main/SVBP-GUI.png" alt="SVBP-GUI" width="106" height="223">
+  </a>
 
    * Put your name and give yourself an ID number then press Save.
    * Face the camera then press Take Picture.
