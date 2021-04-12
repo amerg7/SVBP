@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://seu.edu.sa/en/home/">
-    <img src="https://seu.edu.sa/media/1387/logo_3d_last.png" alt="Logo" width="300" height="90">
+    <img src="https://seu.edu.sa/media/5402/new-logo.png" alt="Logo" width="300" height="90">
   </a>
 
   <h3 align="center">Smart Vision for Blind People(SVBP)</h3>
